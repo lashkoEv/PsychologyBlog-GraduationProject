@@ -1,0 +1,14 @@
+-- drop table if EXISTS quizzes;
+--
+-- CREATE TABLE quizzes
+-- (
+--     id        bigint(20) NOT NULL AUTO_INCREMENT,
+--     user_id   bigint(20) not NULL,
+--     title     varchar(100)       not NULL,
+--     body      text       not NULL,
+--     status enum('OPENED','CLOSED') NOT NULL DEFAULT 'OPENED',
+--     created_ts TIMESTAMP not  NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Created',
+--     modified_ts TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Modified',
+--     PRIMARY KEY (id),
+--     CONSTRAINT quizzes_user_fk FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+-- );
