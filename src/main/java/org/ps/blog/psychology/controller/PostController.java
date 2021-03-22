@@ -17,7 +17,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.security.RolesAllowed;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Slf4j
 @Controller
@@ -84,7 +83,7 @@ public class PostController {
             model.addAttribute("post", post);
             return "add-post";
         }
-        redirectAttributes.addFlashAttribute("msg", "Successful save");
+        redirectAttributes.addFlashAttribute("msg", "Successfully saved");
         redirectAttributes.addFlashAttribute("posts", postService.findAllByOrderByIdDesc());
         return "redirect:/";
     }

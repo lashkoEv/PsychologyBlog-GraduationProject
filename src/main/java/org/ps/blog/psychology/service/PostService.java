@@ -1,7 +1,6 @@
 package org.ps.blog.psychology.service;
 
 import org.ps.blog.psychology.model.Post;
-import org.ps.blog.psychology.model.Quiz;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
