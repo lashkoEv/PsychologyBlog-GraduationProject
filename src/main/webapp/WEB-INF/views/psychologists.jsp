@@ -32,52 +32,54 @@
             </c:forEach>
 
 
-            <c:if test="${page.totalPages > 1}">
-                <div class="row">
-                    <ul class="pagination pagination-sm pagination-lg pagination-control">
-                        <c:choose>
-                            <c:when test="${page.hasPrevious()}">
-                                <li style="margin-right: 20px; padding: 10px" class="waves-effect">
-                                    <a href="${url}?page=${page.number-1}&size=${page.size}">
-                                        <i class="material-icons">chevron_left</i>
-                                    </a>
-                                </li>
-                            </c:when>
-                            <c:otherwise>
-                                <li style="margin-right: 20px; padding: 10px" class="disabled">
-                                    <a href="#!"><i class="material-icons">chevron_left</i></a>
-                                </li>
-                            </c:otherwise>
-                        </c:choose>
-                        <c:forEach var="i" begin="1" end="${page.totalPages}">
+            <div class="row justify-content-md-center">
+                <c:if test="${page.totalPages > 1}">
+                    <div class="row">
+                        <ul class="pagination pagination-sm pagination-lg pagination-control">
                             <c:choose>
-                                <c:when test="${page.number + 1 == i}">
-                                    <li style="margin-right: 20px; padding: 10px" class="active btn-light"><a
-                                            href="${url}?page=${i-1}&size=${page.size}">${i}</a></li>
+                                <c:when test="${page.hasPrevious()}">
+                                    <li style="margin-right: 20px; padding: 10px" class="waves-effect">
+                                        <a href="${url}?page=${page.number-1}&size=${page.size}">
+                                            <i class="material-icons">chevron_left</i>
+                                        </a>
+                                    </li>
                                 </c:when>
                                 <c:otherwise>
-                                    <li style="margin-right: 20px; padding: 10px" class="waves-effect"><a
-                                            href="${url}?page=${i-1}&size=${page.size}">${i}</a>
+                                    <li style="margin-right: 20px; padding: 10px" class="disabled">
+                                        <a href="#!"><i class="material-icons">chevron_left</i></a>
                                     </li>
                                 </c:otherwise>
                             </c:choose>
-                        </c:forEach>
-                        <c:choose>
-                            <c:when test="${page.hasNext()}">
-                                <li style="margin-right: 20px; padding: 10px" class="waves-effect">
-                                    <a href="${url}?page=${page.number+1}&size=${page.size}">
-                                        <i class="material-icons">chevron_right</i>
-                                    </a>
-                                </li>
-                            </c:when>
-                            <c:otherwise>
-                                <li style="margin-right: 20px; padding: 10px" class="disabled"><a href="#!">
-                                    <i class="material-icons">chevron_right</i></a></li>
-                            </c:otherwise>
-                        </c:choose>
-                    </ul>
-                </div>
-            </c:if>
+                            <c:forEach var="i" begin="1" end="${page.totalPages}">
+                                <c:choose>
+                                    <c:when test="${page.number + 1 == i}">
+                                        <li style="margin-right: 20px; padding: 10px" class="active btn-light"><a
+                                                href="${url}?page=${i-1}&size=${page.size}">${i}</a></li>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <li style="margin-right: 20px; padding: 10px" class="waves-effect"><a
+                                                href="${url}?page=${i-1}&size=${page.size}">${i}</a>
+                                        </li>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
+                            <c:choose>
+                                <c:when test="${page.hasNext()}">
+                                    <li style="margin-right: 20px; padding: 10px" class="waves-effect">
+                                        <a href="${url}?page=${page.number+1}&size=${page.size}">
+                                            <i class="material-icons">chevron_right</i>
+                                        </a>
+                                    </li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li style="margin-right: 20px; padding: 10px" class="disabled"><a href="#!">
+                                        <i class="material-icons">chevron_right</i></a></li>
+                                </c:otherwise>
+                            </c:choose>
+                        </ul>
+                    </div>
+                </c:if>
+            </div>
         </div>
     </div>
 </div>
