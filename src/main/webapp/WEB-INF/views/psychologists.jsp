@@ -7,7 +7,8 @@
 <c:set var="subtitle" value="Have questions? We have answers."/>
 <c:set var="picture" value="${pageContext.request.contextPath}/img/11.jpg"/>
 
-<%@include file="./include/header.jsp" %>
+<%@include file="include/navigation.jsp" %>
+<%@include file="include/header.jsp" %>
 
 <!-- Main Content -->
 <div class="container">

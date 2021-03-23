@@ -7,7 +7,9 @@
 <c:set var="subtitle" value="Some interesting things."/>
 <c:set var="picture" value="${pageContext.request.contextPath}/img/14.jpg"/>
 
-<%@include file="./include/header.jsp" %>
+<%@include file="include/navigation.jsp" %>
+<%@include file="include/header.jsp" %>
+
 
 <!-- Main Content -->
 <div class="container">
@@ -21,6 +23,13 @@
             </c:if>
         </div>
 
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <c:if test="${not empty msgErr}">
+                <div class="alert alert-danger">
+                    <strong>Message:</strong> ${msgErr}
+                </div>
+            </c:if>
+        </div>
 
         <div class="col-lg-8 col-md-10 mx-auto">
 

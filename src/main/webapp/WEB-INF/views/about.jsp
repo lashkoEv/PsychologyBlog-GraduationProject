@@ -7,7 +7,9 @@
 <c:set var="subtitle" value="This is what we do."/>
 <c:set var="picture" value="${pageContext.request.contextPath}/img/31.jpg"/>
 
-<%@include file="./include/header.jsp" %>
+<%@include file="include/navigation.jsp" %>
+<%@include file="include/header.jsp" %>
+
 
 
 <!-- Main Content -->

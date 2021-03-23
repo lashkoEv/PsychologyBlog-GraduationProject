@@ -8,14 +8,22 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
+import java.io.IOException;
 import java.util.Arrays;
 
 @EnableWebSecurity
@@ -77,13 +85,54 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated()
                 .and()
-                .formLogin()
 
-                .defaultSuccessUrl("/")
+                .formLogin()
+                .loginPage("/login")
+                .loginProcessingUrl("/login")
+                .usernameParameter("username")
+                .passwordParameter("password")
+                .defaultSuccessUrl("/success")
+                .failureUrl("/login/error")
+                .successHandler(new AuthenticationSuccessHandler() {
+
+                    @Override
+                    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
+                                                        Authentication authentication) throws IOException, ServletException {
+
+                        log.info("--- Logged user: " + authentication.getName());
+                        response.sendRedirect("/success");
+                    }
+                })
+                .failureHandler(new AuthenticationFailureHandler() {
+
+                    @Override
+                    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
+                                                        AuthenticationException exception) throws IOException, ServletException {
+                        log.info("--- Login failed!" + exception.getMessage());
+                        response.sendRedirect("/login/error");
+                    }
+                })
+                .permitAll()
+
                 .and()
                 .logout()
-                .logoutSuccessUrl("/")
+
+//                .logoutUrl("/logout")
+                .logoutSuccessHandler(new LogoutSuccessHandler() {
+
+                    @Override
+                    public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response,
+                                                Authentication authentication)
+                            throws IOException, ServletException {
+
+                        log.info("--- Logged out " + authentication.getName());
+                        response.sendRedirect("/logout/success");
+                    }
+                })
+                .deleteCookies()
+                .permitAll()
                 .and().csrf().disable();
+
 
         httpSecurity.headers()
                 .frameOptions()

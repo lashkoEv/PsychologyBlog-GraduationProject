@@ -7,7 +7,9 @@
 <c:set var="subtitle" value="Have questions? We have answers."/>
 <c:set var="picture" value="${pageContext.request.contextPath}/img/contact-bg.jpg"/>
 
-<%@include file="./include/header.jsp" %>
+<%@include file="include/navigation.jsp" %>
+<%@include file="include/header.jsp" %>
+
 
 <!-- TODO можно переделать под регистрацию/авторизацию -->
 

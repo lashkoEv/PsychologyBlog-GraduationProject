@@ -8,7 +8,9 @@
 <c:set var="picture" value='${pageContext.request.contextPath}/img/28.jpg'/>
 
 
-<%@include file="./include/header.jsp" %>
+<%@include file="include/navigation.jsp" %>
+<%@include file="include/header.jsp" %>
+
 
 <!-- Main Content -->
 <div class="container">

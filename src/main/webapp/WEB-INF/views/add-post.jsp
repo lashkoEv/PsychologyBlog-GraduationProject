@@ -8,7 +8,9 @@
 <c:set var="picture" value='${pageContext.request.contextPath}/img/30.jpg'/>
 
 
-<%@include file="./include/header.jsp" %>
+<%@include file="include/navigation.jsp" %>
+<%@include file="include/header.jsp" %>
+
 
 <script src="${pageContext.request.contextPath}/ckeditor/ckeditor.js"></script>
 

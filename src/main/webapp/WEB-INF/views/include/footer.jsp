@@ -1,6 +1,6 @@
 <!-- Footer -->
 <footer>
-    <div class="container">
+    <div class="container body-container">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <ul class="list-inline text-center">
@@ -37,11 +37,11 @@
 
 
 <!-- Bootstrap core JavaScript -->
-<script src="${pageContext.request.contextPath}/vendor/jquery/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<spring:url value="/vendor/jquery/jquery.min.js"/>"></script>
+<script src="<spring:url value="/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
 
 <!-- Custom scripts for this template -->
-<script src="${pageContext.request.contextPath}/js/clean-blog.min.js"></script>
+<script src="<spring:url value="/js/clean-blog.min.js"/>"></script>
 
 </body>
 </html>

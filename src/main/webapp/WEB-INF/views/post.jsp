@@ -7,7 +7,9 @@
 <c:set var="subtitle" value="Posted by ${post.user.getFirstName()} ${post.user.getLastName()} on ${post.createdTs}"/>
 <c:set var="picture" value="${pageContext.request.contextPath}/img/22.jpg"/>
 
-<%@include file="./include/header.jsp" %>
+<%@include file="include/navigation.jsp" %>
+<%@include file="include/header.jsp" %>
+
 
 
 <!-- Main Content -->

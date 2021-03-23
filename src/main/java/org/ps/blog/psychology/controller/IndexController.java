@@ -12,7 +12,11 @@ import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import java.util.Map;
 
 @Controller
@@ -47,5 +51,32 @@ public class IndexController {
         log.info(" --- about");
         model.put("message", "You are in about page!!!");
         return "about";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        log.info(" --- login");
+        return "login";
+    }
+
+    @GetMapping("/success")
+    public String authorizationSuccess(RedirectAttributes redirectAttributes) {
+        log.info(" --- index successfully authorized");
+        redirectAttributes.addFlashAttribute("msg", "Successfully authorized!");
+        return "redirect:/";
+    }
+
+    @GetMapping("/login/error")
+    public String authorizationError(RedirectAttributes redirectAttributes) {
+        log.info(" --- index authorisation error");
+        redirectAttributes.addFlashAttribute("msgErr", "Authorisation Error!");
+        return "redirect:/";
+    }
+    
+    @GetMapping("/logout/success")
+    public String logout(RedirectAttributes redirectAttributes) {
+        log.info(" --- index logout");
+        redirectAttributes.addFlashAttribute("msg", "Successfully logged out!");
+        return "redirect:/";
     }
 }

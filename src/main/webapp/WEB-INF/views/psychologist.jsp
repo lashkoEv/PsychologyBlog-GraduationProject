@@ -7,7 +7,8 @@
 <c:set var="subtitle" value="Born ${user.getBirthDate()} Email: ${user.getEmail()}"/>
 <c:set var="picture" value="${pageContext.request.contextPath}/img/19.jpg"/>
 
-<%@include file="./include/header.jsp" %>
+<%@include file="include/navigation.jsp" %>
+<%@include file="include/header.jsp" %>
 
 
 <!-- FIXME добавить пагинацию -->
