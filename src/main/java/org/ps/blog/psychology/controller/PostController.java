@@ -20,7 +20,7 @@ import java.time.LocalDate;
 
 @Slf4j
 @Controller
-@RequestMapping("/post")
+@RequestMapping("/posts")
 public class PostController {
 
     private final UserService userService;

@@ -22,8 +22,8 @@
 
         <sec:authorize access="hasAnyRole('ROLE_PSYCHOLOGIST', 'ROLE_ADMIN')">
             <div class="col-lg-8 col-md-10 mx-auto">
-                <a class="btn btn-primary" href="<spring:url value="/post/edit/${post.id}"/>">Update</a>
-                <a class="btn btn-primary" href="<spring:url value="/post/delete/${post.id}"/>">Delete</a>
+                <a class="btn btn-primary" href="<spring:url value="/posts/edit/${post.id}"/>">Update</a>
+                <a class="btn btn-primary" href="<spring:url value="/posts/delete/${post.id}"/>">Delete</a>
             </div>
         </sec:authorize>
     </div>

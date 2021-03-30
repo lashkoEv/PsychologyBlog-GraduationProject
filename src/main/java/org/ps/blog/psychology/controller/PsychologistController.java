@@ -28,7 +28,7 @@ import java.util.Set;
 
 @Slf4j
 @Controller
-@RequestMapping("/psychologist")
+@RequestMapping("/psychologists")
 public class PsychologistController {
 
     private final UserService userService;

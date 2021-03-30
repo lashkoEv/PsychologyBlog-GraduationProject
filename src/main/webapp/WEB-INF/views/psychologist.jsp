@@ -23,14 +23,14 @@
             <hr/>
             <c:forEach items="${posts}" var="p">
                 <div class="post-preview">
-                    <a href="<spring:url value="/post/${p.id}"/>">
+                    <a href="<spring:url value="/posts/${p.id}"/>">
                         <h2 class="post-title">${p.title}</h2>
                     </a>
                     <p class="post-meta">Posted by
 
                         <!-- FIXME href ссылка на психолога -->
 
-                        <a href="<spring:url value="/psychologist/${p.user.getId()}"/>">${p.user.getFirstName()} ${p.user.getLastName()}</a>
+                        <a href="<spring:url value="/psychologists/${p.user.getId()}"/>">${p.user.getFirstName()} ${p.user.getLastName()}</a>
                         on ${p.createdTs}</p>
                 </div>
                 <hr>
@@ -41,7 +41,7 @@
         <%--    <div class="row">--%>
         <div class="col-md-6">
             <div class="row justify-content-md-center">
-                <h1 style="color: #0085A1">TESTS</h1>
+                <h1 style="color: #0085A1">QUIZZES</h1>
             </div>
             <hr/>
 
@@ -56,8 +56,8 @@
 
             <%--        FIXME переделать на кнопки --%>
 
-        <a class="btn btn-primary" href="<spring:url value="/psychologist/edit/${user.id}"/>">Update</a>
-        <a class="btn btn-primary" href="<spring:url value="/psychologist/delete/${user.id}"/>">Delete</a>
+        <a class="btn btn-primary" href="<spring:url value="/psychologists/edit/${user.id}"/>">Update</a>
+        <a class="btn btn-primary" href="<spring:url value="/psychologists/delete/${user.id}"/>">Delete</a>
     </div>
     </sec:authorize>
     <hr>
