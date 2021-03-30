@@ -16,9 +16,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -114,10 +117,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 })
                 .permitAll()
 
+
                 .and()
                 .logout()
 
-//                .logoutUrl("/logout")
+                //.logoutUrl("/")
                 .logoutSuccessHandler(new LogoutSuccessHandler() {
 
                     @Override
@@ -129,9 +133,16 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                         response.sendRedirect("/logout/success");
                     }
                 })
-                .deleteCookies()
-                .permitAll()
-                .and().csrf().disable();
+
+                .and()
+                .rememberMe()
+                .key("rememberMe")
+                .rememberMeParameter("remember-me")
+                .tokenValiditySeconds(360000)
+
+                .and()
+                .csrf()
+                .disable();
 
 
         httpSecurity.headers()
@@ -155,5 +166,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
+
 
 }

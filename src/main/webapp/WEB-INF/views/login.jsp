@@ -116,6 +116,12 @@
 <%--                            <label for="inputConfirmPassword">Confirm password</label>--%>
 <%--                        </div>--%>
 
+                        <div class="form-check">
+                            <input type="checkbox" class="custom-checkbox" id="remember-me" name="remember-me">
+                            <label class="form-check-label" for="remember-me">Remember password</label>
+                        </div>
+
+
                         <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
 <%--                        <a class="d-block text-center mt-2 small" href="#">Sign In</a>--%>
 <%--                        <hr class="my-4">--%>
