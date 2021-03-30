@@ -22,7 +22,7 @@
     <link href="<spring:url value="/vendor/fontawesome-free/css/all.min.css"/>" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
           type='text/css'>
-<%--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">--%>
+    <%--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">--%>
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
           rel='stylesheet' type='text/css'>
@@ -44,35 +44,51 @@
             Menu
             <i class="fas fa-bars"></i>
         </button>
+
+
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="<spring:url value="/"/>">Home</a>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Posts
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="<spring:url value="/"/>">All posts</a>
+                        <sec:authorize access="hasAnyRole('ROLE_PSYCHOLOGIST', 'ROLE_ADMIN')">
+                            <a class="dropdown-item" href="<spring:url value="/post/create"/>">Create new post</a>
+                        </sec:authorize>
+                    </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<spring:url value="/quiz"/>">Tests</a>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Quizzes
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="<spring:url value="/quizzes"/>">All quizzes</a>
+                        <sec:authorize access="hasAnyRole('ROLE_PSYCHOLOGIST', 'ROLE_ADMIN')">
+                            <a class="dropdown-item" href="<spring:url value="/quizzes/create"/>">Create new quiz</a>
+                        </sec:authorize>
+                    </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<spring:url value="/psychologist"/>">Psychologists</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Psychologists
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="<spring:url value="/psychologists"/>">All psychologists</a>
+                        <sec:authorize access="hasRole('ROLE_ADMIN')">
+                            <a class="dropdown-item" href="<spring:url value="/psychologists/create"/>">Register new psychologist</a>
+                        </sec:authorize>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<spring:url value="/about"/>">About</a>
                 </li>
-                <sec:authorize access="hasAnyRole('ROLE_PSYCHOLOGIST', 'ROLE_ADMIN')">
-                    <li class="nav-item">
-                        <a class="nav-link" href="<spring:url value="/post/create"/>">Add post</a>
-                    </li>
-                </sec:authorize>
-                <sec:authorize access="hasAnyRole('ROLE_PSYCHOLOGIST', 'ROLE_ADMIN')">
-                    <li class="nav-item">
-                        <a class="nav-link" href="<spring:url value="/quiz/create"/>">Add test</a>
-                    </li>
-                </sec:authorize>
-                <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <li class="nav-item">
-                        <a class="nav-link" href="<spring:url value="/psychologist/create"/>">Register</a>
-                    </li>
-                </sec:authorize>
                 <li class="nav-item">
                     <sec:authorize access="isAnonymous()">
                         <a class="nav-link" href="<spring:url value="/login"/>">Login</a>
@@ -82,9 +98,13 @@
                            href="<spring:url value="/logout"/>">Logout '${pageContext.request.userPrincipal.name}' </a>
                     </sec:authorize>
                 </li>
+
+<%--                <form class="form-inline my-2 my-lg-0">--%>
+<%--                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">--%>
+<%--                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>--%>
+<%--                </form>--%>
             </ul>
 
         </div>
     </div>
 </nav>
-
