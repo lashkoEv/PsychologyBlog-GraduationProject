@@ -35,67 +35,21 @@
 
             <c:forEach items="${posts}" var="p">
                 <div class="post-preview">
-                    <a href="<spring:url value="/post/${p.id}"/>">
+                    <a href="<spring:url value="/posts/${p.id}"/>">
                         <h2 class="post-title">${p.title}</h2>
                     </a>
                     <p class="post-meta">Posted by
 
                         <!-- FIXME href ссылка на психолога -->
 
-                        <a href="<spring:url value="/psychologist/${p.user.getId()}"/>">${p.user.getFirstName()} ${p.user.getLastName()}</a>
+                        <a href="<spring:url value="/psychologists/${p.user.getId()}"/>">${p.user.getFirstName()} ${p.user.getLastName()}</a>
                         on ${p.createdTs}</p>
                 </div>
                 <hr>
             </c:forEach>
 
-            <div class="row justify-content-md-center">
-                <c:if test="${page.totalPages > 1}">
-                    <div class="row">
-                        <ul class="pagination pagination-sm pagination-lg pagination-control">
-                            <c:choose>
-                                <c:when test="${page.hasPrevious()}">
-                                    <li style="margin-right: 20px; padding: 10px" class="waves-effect">
-                                        <a href="${url}?page=${page.number-1}&size=${page.size}">
-                                            <i class="material-icons">chevron_left</i>
-                                        </a>
-                                    </li>
-                                </c:when>
-                                <c:otherwise>
-                                    <li style="margin-right: 20px; padding: 10px" class="disabled">
-                                        <a href="#!"><i class="material-icons">chevron_left</i></a>
-                                    </li>
-                                </c:otherwise>
-                            </c:choose>
-                            <c:forEach var="i" begin="1" end="${page.totalPages}">
-                                <c:choose>
-                                    <c:when test="${page.number + 1 == i}">
-                                        <li style="margin-right: 20px; padding: 10px" class="active btn-light"><a
-                                                href="${url}?page=${i-1}&size=${page.size}">${i}</a></li>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <li style="margin-right: 20px; padding: 10px" class="waves-effect"><a
-                                                href="${url}?page=${i-1}&size=${page.size}">${i}</a>
-                                        </li>
-                                    </c:otherwise>
-                                </c:choose>
-                            </c:forEach>
-                            <c:choose>
-                                <c:when test="${page.hasNext()}">
-                                    <li style="margin-right: 20px; padding: 10px" class="waves-effect">
-                                        <a href="${url}?page=${page.number+1}&size=${page.size}">
-                                            <i class="material-icons">chevron_right</i>
-                                        </a>
-                                    </li>
-                                </c:when>
-                                <c:otherwise>
-                                    <li style="margin-right: 20px; padding: 10px" class="disabled"><a href="#!">
-                                        <i class="material-icons">chevron_right</i></a></li>
-                                </c:otherwise>
-                            </c:choose>
-                        </ul>
-                    </div>
-                </c:if>
-            </div>
+            <%@include file="include/pagination.jsp" %>
+
         </div>
     </div>
 </div>
