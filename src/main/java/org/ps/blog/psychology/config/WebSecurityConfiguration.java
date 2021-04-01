@@ -120,8 +120,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
                 .and()
                 .logout()
-
-                //.logoutUrl("/")
+                .logoutUrl("/logout")
                 .logoutSuccessHandler(new LogoutSuccessHandler() {
 
                     @Override

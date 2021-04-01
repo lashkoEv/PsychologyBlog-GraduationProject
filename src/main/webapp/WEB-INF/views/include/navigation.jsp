@@ -57,7 +57,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="<spring:url value="/"/>">All posts</a>
                         <sec:authorize access="hasAnyRole('ROLE_PSYCHOLOGIST', 'ROLE_ADMIN')">
-                            <a class="dropdown-item" href="<spring:url value="/post/create"/>">Create new post</a>
+                            <a class="dropdown-item" href="<spring:url value="/posts/create"/>">Create new post</a>
                         </sec:authorize>
                     </div>
                 </li>

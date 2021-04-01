@@ -3,8 +3,10 @@ package org.ps.blog.psychology.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.ps.blog.psychology.model.Authority;
 import org.ps.blog.psychology.model.Post;
+import org.ps.blog.psychology.model.Quiz;
 import org.ps.blog.psychology.model.User;
 import org.ps.blog.psychology.service.PostService;
+import org.ps.blog.psychology.service.QuizService;
 import org.ps.blog.psychology.service.UserService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -35,11 +37,14 @@ public class PsychologistController {
 
     private final PostService postService;
 
+    private final QuizService quizService;
+
     private PasswordEncoder passwordEncoder;
 
-    public PsychologistController(UserService userService, PostService postService, PasswordEncoder passwordEncoder) {
+    public PsychologistController(UserService userService, PostService postService, QuizService quizService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.postService = postService;
+        this.quizService = quizService;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -48,8 +53,10 @@ public class PsychologistController {
         log.info(" --- psychologist " + id);
         User user = userService.findById(id);
         List<Post> posts = postService.findAllByUserId(id);
+        List<Quiz> quizzes = quizService.findAllByUserId(id);
         model.addAttribute("user", user);
         model.addAttribute("posts", posts);
+        model.addAttribute("quizzes", quizzes);
         return "psychologist";
     }
 

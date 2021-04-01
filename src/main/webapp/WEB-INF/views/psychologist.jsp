@@ -46,12 +46,26 @@
             <hr/>
 
             <%--   FIXME добавить отображение тестов --%>
+            <c:forEach items="${quizzes}" var="t">
+                <div class="post-preview">
+                    <a href="<spring:url value="/quizzes/${t.id}"/>">
+                        <h2 class="post-title">${t.title}</h2>
+                    </a>
+                    <p class="post-meta">Posted by
 
+                        <!-- FIXME href ссылка на психолога -->
+
+                        <a href="<spring:url value="/psychologists/${t.user.getId()}"/>">${t.user.getFirstName()} ${t.user.getLastName()}</a>
+                        on ${t.createdTs}</p>
+                </div>
+                <hr>
+            </c:forEach>
         </div>
     </div>
 
-    <hr>
+
     <sec:authorize access="hasAnyRole('ROLE_ADMIN')">
+    <hr>
     <div class="col-lg-8 col-md-10 mx-auto justify-content-center">
 
             <%--        FIXME переделать на кнопки --%>
