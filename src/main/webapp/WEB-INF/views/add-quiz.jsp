@@ -74,6 +74,9 @@
                             <label>Possible answer:</label>
                             <input type="text" class="form-control" required="required" v-model="answer.textAnswer"
                                    data-validation-required-message="Р Р°Р·РјРµСЂ РЅРµ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РјРµРЅСЊС€Рµ 5 СЃРёРјРІРѕР»РѕРІ!">
+                            <label style="margin-top: 5px">Weight:</label>
+                            <input type="number" class="form-control" required="required" v-model="answer.position"
+                                   data-validation-required-message="Р Р°Р·РјРµСЂ РЅРµ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РјРµРЅСЊС€Рµ 5 СЃРёРјРІРѕР»РѕРІ!">
                         </div>
                     </li>
                 </ul>
@@ -108,11 +111,11 @@
                     </div>
                     <div class="col-form-label col-md-6">
                         <label>Lower bound</label>
-                        <input type="text" class="form-control" required="required" v-model="scale.min">
+                        <input type="number" class="form-control" required="required" v-model="scale.min">
                     </div>
                     <div class="col-form-label col-md-6">
                         <label>Upper bound</label>
-                        <input type="text" class="form-control" required="required" v-model="scale.max">
+                        <input type="number" class="form-control" required="required" v-model="scale.max">
                     </div>
                 </div>
             </li>
@@ -267,9 +270,9 @@
 
             addPossibleAnswers: function (item) {
                 var possibleAnswer = new PossibleAnswer()
-                var positionMax = item.possibleAnswers.map(q => q.position);
-                positionMax = Math.max.apply(Math, positionMax);
-                possibleAnswer.position = positionMax + 1;
+              //  var positionMax = item.possibleAnswers.map(q => q.position);
+              //  positionMax = Math.max.apply(Math, positionMax);
+             //   possibleAnswer.position = positionMax + 1;
                 item.possibleAnswers.push(possibleAnswer);
                 console.log(item);
             },
