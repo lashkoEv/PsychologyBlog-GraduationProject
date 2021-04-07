@@ -14,8 +14,29 @@
 <%--FIXME переделать когда будут готовы тесты--%>
 <!-- Main Content -->
 <div class="container">
-    <div class="row">
 
+    <div class="col-lg-8 col-md-10 mx-auto">
+        <form action="<c:url value="/quizzes"/>">
+            <div class="row">
+                <div class="form-group floating-label-form-group controls col-md-8">
+                    <label for="search">Search</label>
+                    <input id="search" name="search" type="text" required="required"
+                           class="form-control" placeholder="Search"/>
+                </div>
+                <span>&nbsp;</span>
+                <button type="submit" class="btn btn-light">SEARCH
+                    <i class="fas fa-search"></i>
+                </button>
+                <span>&nbsp;</span>
+                <a class="btn btn-light" style="padding-top: 27px" href="<spring:url value="/"/>">CLEAR</a>
+
+            </div>
+
+        </form>
+    </div>
+
+
+    <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
             <c:if test="${not empty msg}">
                 <div class="alert alert-success">

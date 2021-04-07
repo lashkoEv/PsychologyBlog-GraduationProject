@@ -55,4 +55,8 @@ public class UserServiceImpl implements UserService {
         return userRepository.findUsersByAuthoritiesNative(pageable);
     }
 
+    @Override
+    public Page<User> findSearchedUsers(String search, Pageable pageable) {
+        return userRepository.findSearchedUsers(search, pageable);
+    }
 }

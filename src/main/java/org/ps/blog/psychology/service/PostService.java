@@ -14,6 +14,8 @@ public interface PostService {
 
     public Page<Post> findAll(Pageable pageable);
 
+    public Page<Post> findSearchedPosts(String search, Pageable pageable);
+
     Post save(Post post);
 
     void delete(Long id);

@@ -6,7 +6,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface QuizService {
 
@@ -33,4 +32,5 @@ public interface QuizService {
 
     List<Quiz> findAllByUserId(Long id);
 
+    public Page<Quiz> findSearchedQuizzes(String search, Pageable pageable);
 }

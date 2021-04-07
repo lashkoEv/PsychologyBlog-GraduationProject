@@ -1,6 +1,7 @@
 package org.ps.blog.psychology.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.ps.blog.psychology.model.Post;
 import org.ps.blog.psychology.model.Quiz;
 import org.ps.blog.psychology.model.User;
 import org.ps.blog.psychology.service.QuizService;
@@ -9,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -56,10 +58,15 @@ public class QuizController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "")
-    public String index(Model model, Integer page, Integer size) {
+    public String index(Model model, Integer page, Integer size, @Param("search") String search) {
         log.info(" --- index quiz");
         Pageable pageable = PageRequest.of(page == null ? 0 : page, size == null ? 5 : size, Sort.by("id").descending());
-        Page<Quiz> quizPage = quizService.findAll(pageable);
+        Page<Quiz> quizPage;
+        if (search != null) {
+            quizPage = quizService.findSearchedQuizzes(search, pageable);
+        } else {
+            quizPage = quizService.findAll(pageable);
+        }
         model.addAttribute("quizzes", quizPage.getContent());
         model.addAttribute("page", quizPage);
         return "quizzes";

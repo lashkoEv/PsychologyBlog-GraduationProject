@@ -1,6 +1,5 @@
 package org.ps.blog.psychology.service.impl;
 
-import org.ps.blog.psychology.model.Post;
 import org.ps.blog.psychology.model.Quiz;
 import org.ps.blog.psychology.repository.QuizRepository;
 import org.ps.blog.psychology.repository.UserRepository;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -33,7 +31,7 @@ public class QuizServiceImpl implements QuizService {
     @Override
     @Transactional(readOnly = true)
     public Quiz findFetchAllProperiesById(Long id) {
-        return quizRepository.findFetchAllProperiesById(id);
+        return quizRepository.findFetchAllPropertiesById(id);
     }
 
     @Override
@@ -78,5 +76,10 @@ public class QuizServiceImpl implements QuizService {
     @Override
     public List<Quiz> findAllByUserId(Long id) {
         return quizRepository.findAllByUserId(id);
+    }
+
+    @Override
+    public Page<Quiz> findSearchedQuizzes(String search, Pageable pageable) {
+        return quizRepository.findSearchedQuizzes(search, pageable);
     }
 }

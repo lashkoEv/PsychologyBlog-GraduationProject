@@ -1,6 +1,5 @@
 package org.ps.blog.psychology.service;
 
-import org.ps.blog.psychology.model.Post;
 import org.ps.blog.psychology.model.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -22,4 +21,6 @@ public interface UserService {
     Page<User> findAll(Pageable pageable);
 
     Page<User> findUsersByAuthoritiesNative(Pageable pageable);
+
+    public Page<User> findSearchedUsers(String search, Pageable pageable);
 }

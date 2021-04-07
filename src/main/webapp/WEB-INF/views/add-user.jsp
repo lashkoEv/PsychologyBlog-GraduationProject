@@ -91,7 +91,7 @@
 
                 <br/>
                 <div class="row justify-content-center">
-                    <button type="submit" class="btn btn-primary">SAVE NEW PSYCHOLOGIST
+                    <button type="submit" class="btn btn-primary">SAVE PSYCHOLOGIST
                         <i class="material-icons right" style="font-size: small">send</i>
                     </button>
                 </div>

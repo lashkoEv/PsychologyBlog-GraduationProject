@@ -7,7 +7,6 @@ import org.ps.blog.psychology.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,6 +37,11 @@ public class PostServiceImpl implements PostService {
     @Override
     public Page<Post> findAll(Pageable pageable) {
         return postRepository.findAll(pageable);
+    }
+
+    @Override
+    public Page<Post> findSearchedPosts(String search, Pageable pageable) {
+        return postRepository.findSearchedPosts(search, pageable);
     }
 
     @Override

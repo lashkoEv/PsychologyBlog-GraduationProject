@@ -12,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -61,10 +62,15 @@ public class PsychologistController {
     }
 
     @RequestMapping(path = "", method = RequestMethod.GET)
-    public String psychologists(Model model, Integer page, Integer size) {
+    public String psychologists(Model model, Integer page, Integer size, @Param("search") String search) {
         log.info(" --- psychologist index");
         Pageable pageable = PageRequest.of(page == null ? 0 : page, size == null ? 7 : size, Sort.by("id").descending());
-        Page<User> userPage = userService.findUsersByAuthoritiesNative(pageable);
+        Page<User> userPage;
+        if (search != null) {
+            userPage = userService.findSearchedUsers(search, pageable);
+        } else {
+            userPage = userService.findUsersByAuthoritiesNative(pageable);
+        }
         model.addAttribute("users", userPage.getContent());
         model.addAttribute("page", userPage);
         return "psychologists";

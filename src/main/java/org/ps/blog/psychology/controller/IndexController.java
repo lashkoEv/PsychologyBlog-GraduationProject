@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +28,7 @@ public class IndexController {
 
     private final PostService postService;
 
-//    @Autowired
+    //    @Autowired
     private PasswordEncoder passwordEncoder;
 
     public IndexController(UserService userService, PostService postService, PasswordEncoder passwordEncoder) {
@@ -37,10 +38,15 @@ public class IndexController {
     }
 
     @RequestMapping(value = {"/", "/home", "/index"})
-    public String home(Model model,  Integer page, Integer size) {
+    public String home(Model model, Integer page, Integer size, @Param("search") String search) {
         log.info(" --- index");
         Pageable pageable = PageRequest.of(page == null ? 0 : page, size == null ? 5 : size, Sort.by("id").descending());
-        Page<Post> postPage = postService.findAll(pageable);
+        Page<Post> postPage;
+        if (search != null) {
+            postPage = postService.findSearchedPosts(search, pageable);
+        } else {
+            postPage = postService.findAll(pageable);
+        }
         model.addAttribute("posts", postPage.getContent());
         model.addAttribute("page", postPage);
         return "index";
@@ -72,7 +78,7 @@ public class IndexController {
         redirectAttributes.addFlashAttribute("msgErr", "Authorisation Error!");
         return "redirect:/";
     }
-    
+
     @GetMapping("/logout/success")
     public String logout(RedirectAttributes redirectAttributes) {
         log.info(" --- index logout");
