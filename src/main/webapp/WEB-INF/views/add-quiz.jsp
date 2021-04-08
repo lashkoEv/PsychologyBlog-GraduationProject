@@ -17,12 +17,12 @@
 
 <div class="container">
 
-    <div class="col-lg-8 col-md-10 mx-auto">
-        <c:if test="${not empty errorMessage}">
-            <div class="alert alert-danger">
-                <strong>Error:</strong> ${errorMessage}
-            </div>
-        </c:if>
+    <div class="col-lg-8 col-md-10 mx-auto" id="errDiv">
+<%--        <c:if test="${not empty errorMessage}">--%>
+<%--            <div class="alert alert-danger" >--%>
+<%--                <strong>Error:</strong> ${errorMessage}--%>
+<%--            </div>--%>
+<%--        </c:if>--%>
     </div>
 
     <div class="col-lg-8 col-md-10 mx-auto my-div" id="quiz">
@@ -301,6 +301,11 @@
                     console.log('Успех:', JSON.stringify(json));
                     window.location.href = "/quizzes";
                 } catch (error) {
+                    let errParent = document.getElementById("errDiv");
+                    let d = document.createElement("p");
+                    d.className = "alert alert-danger";
+                    d.textContent = "Error: minimum length is 5 characters";
+                    errParent.appendChild(d);
                     console.error('Ошибка:', error);
                 }
             },

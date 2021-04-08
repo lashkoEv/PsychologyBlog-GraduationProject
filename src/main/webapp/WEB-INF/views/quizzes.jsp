@@ -35,15 +35,7 @@
         </form>
     </div>
 
-
     <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-            <c:if test="${not empty msg}">
-                <div class="alert alert-success">
-                    <strong>Message:</strong> ${msg}
-                </div>
-            </c:if>
-        </div>
 
         <div class="col-lg-8 col-md-10 mx-auto">
             <c:forEach items="${quizzes}" var="t">
