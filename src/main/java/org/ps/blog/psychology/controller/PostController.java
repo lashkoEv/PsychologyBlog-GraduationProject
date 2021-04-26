@@ -83,7 +83,7 @@ public class PostController {
             model.addAttribute("post", post);
             return "add-post";
         }
-        redirectAttributes.addFlashAttribute("msg", "Successfully saved");
+        redirectAttributes.addFlashAttribute("msg", "Статья успешно сохранена!");
         redirectAttributes.addFlashAttribute("posts", postService.findAllByOrderByIdDesc());
         return "redirect:/";
     }
@@ -103,7 +103,7 @@ public class PostController {
             if (user.equals(author) || u.getAuthorities().toString().contains("ROLE_ADMIN")) {
                 postService.delete(id);
                 log.info(" --- deleted post id {}", id);
-                redirectAttributes.addFlashAttribute("msg", "Successfully deleted");
+                redirectAttributes.addFlashAttribute("msg", "Статья успешно удалена!");
             }
         } catch (AuthenticationException e) {
             log.error(" --- Error ", e.getLocalizedMessage());
@@ -163,7 +163,7 @@ public class PostController {
             model.addAttribute("post", post);
             return "add-post";
         }
-        redirectAttributes.addFlashAttribute("msg", "Successfully updated");
+        redirectAttributes.addFlashAttribute("msg", "Статья успешно обновлена!");
         model.addAttribute("posts", postService.findAllByOrderByIdDesc());
         return "redirect:/";
     }

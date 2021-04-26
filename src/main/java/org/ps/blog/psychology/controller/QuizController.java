@@ -111,12 +111,12 @@ public class QuizController {
             if (user.equals(author) || u.getAuthorities().toString().contains("ROLE_ADMIN")) {
                 quizService.delete(id);
                 log.info(" --- deleted test id {}", id);
-                redirectAttributes.addFlashAttribute("msg", "Successfully deleted");
+                redirectAttributes.addFlashAttribute("msg", "Тест успешно удалён!");
             }
         } catch (AuthenticationException e) {
             log.error(" --- Error ", e.getLocalizedMessage());
         }
         model.addAttribute("posts", quizService.findAll());
-        return "redirect:/";
+        return "redirect:/quizzes";
     }
 }

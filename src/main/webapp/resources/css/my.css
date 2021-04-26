@@ -18,7 +18,6 @@ form {
     border: cadetblue dotted 1px;
     padding: 15px;
     border-radius: 0.75rem;
-    padding: 15px;
     margin: 15px;
 }
 
@@ -34,3 +33,6 @@ form {
     border: 1px solid #30f02d;
 }
 
+.to-up {
+    cursor: pointer;
+}

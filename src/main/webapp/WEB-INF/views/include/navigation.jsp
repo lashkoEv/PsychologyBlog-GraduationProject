@@ -41,7 +41,7 @@
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
-            Menu
+            Меню
             <i class="fas fa-bars"></i>
         </button>
 
@@ -52,12 +52,12 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Posts
+                        Статьи
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="<spring:url value="/"/>">All posts</a>
+                        <a class="dropdown-item" href="<spring:url value="/"/>">Все статьи</a>
                         <sec:authorize access="hasAnyRole('ROLE_PSYCHOLOGIST', 'ROLE_ADMIN')">
-                            <a class="dropdown-item" href="<spring:url value="/posts/create"/>">Create new post</a>
+                            <a class="dropdown-item" href="<spring:url value="/posts/create"/>">Добавить новую статью</a>
                         </sec:authorize>
                     </div>
                 </li>
@@ -65,44 +65,40 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Quizzes
+                        Тесты
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="<spring:url value="/quizzes"/>">All quizzes</a>
+                        <a class="dropdown-item" href="<spring:url value="/quizzes"/>">Все тесты</a>
                         <sec:authorize access="hasAnyRole('ROLE_PSYCHOLOGIST', 'ROLE_ADMIN')">
-                            <a class="dropdown-item" href="<spring:url value="/quizzes/create"/>">Create new quiz</a>
+                            <a class="dropdown-item" href="<spring:url value="/quizzes/create"/>">Добавить новый тест</a>
                         </sec:authorize>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Psychologists
+                        Психологи
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="<spring:url value="/psychologists"/>">All psychologists</a>
+                        <a class="dropdown-item" href="<spring:url value="/psychologists"/>">Все психологи</a>
                         <sec:authorize access="hasRole('ROLE_ADMIN')">
-                            <a class="dropdown-item" href="<spring:url value="/psychologists/create"/>">Register new psychologist</a>
+                            <a class="dropdown-item" href="<spring:url value="/psychologists/create"/>">Зарегистрировать нового психолога</a>
                         </sec:authorize>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<spring:url value="/about"/>">About</a>
+                    <a class="nav-link" href="<spring:url value="/about"/>">Про нас</a>
                 </li>
                 <li class="nav-item">
                     <sec:authorize access="isAnonymous()">
-                        <a class="nav-link" href="<spring:url value="/login"/>">Login</a>
+                        <a class="nav-link" href="<spring:url value="/login"/>">Войти</a>
                     </sec:authorize>
                     <sec:authorize access="!isAnonymous()">
                         <a class="nav-link"
-                           href="<spring:url value="/logout"/>">Logout '${pageContext.request.userPrincipal.name}' </a>
+                           href="<spring:url value="/logout"/>">Выйти '${pageContext.request.userPrincipal.name}' </a>
                     </sec:authorize>
                 </li>
 
-<%--                <form class="form-inline my-2 my-lg-0">--%>
-<%--                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">--%>
-<%--                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>--%>
-<%--                </form>--%>
             </ul>
 
         </div>

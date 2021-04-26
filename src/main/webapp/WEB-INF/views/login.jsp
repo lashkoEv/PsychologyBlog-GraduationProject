@@ -2,8 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 
-<c:set var="title" value="Log in"/>
-<c:set var="subtitle" value="Please enter username and password."/>
+<c:set var="title" value="Вход"/>
+<c:set var="subtitle" value="Пожалуйста ввевите Ваши учётные данные..."/>
 <c:set var="picture" value="${pageContext.request.contextPath}/img/37.jpg"/>
 
 <%@include file="include/navigation.jsp" %>
@@ -18,12 +18,12 @@
                 </div>
                 <div class="card-body">
                     <br/><br/><br/>
-                    <h5 class="card-title text-center font-weight-bold">LOG IN</h5>
+                    <h5 class="card-title text-center font-weight-bold">АВТОРИЗАЦИЯ</h5>
                     <br/>
                     <form class="form-signin" method="POST" action="<spring:url value="/login"/>">
                         <div class="form-label-group">
-                            <input type="text" id="inputUserame" name="username" class="form-control" placeholder="Username" required autofocus>
-                            <label for="inputUserame">Username</label>
+                            <input type="text" id="inputUserame" name="username" class="form-control" placeholder="Логин" required autofocus>
+                            <label for="inputUserame">Логин</label>
                         </div>
 
 <%--                        <div class="form-label-group">--%>
@@ -34,8 +34,8 @@
 <%--                        <hr>--%>
 
                         <div class="form-label-group">
-                            <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
-                            <label for="inputPassword">Password</label>
+                            <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Пароль" required>
+                            <label for="inputPassword">Пароль</label>
                         </div>
 <%--                        <div class="form-label-group">--%>
 <%--                            <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Password" required>--%>
@@ -44,11 +44,11 @@
 
                         <div class="form-check">
                             <input type="checkbox" class="custom-checkbox" id="remember-me" name="remember-me">
-                            <label class="form-check-label" for="remember-me">Remember password</label>
+                            <label class="form-check-label" for="remember-me">Не выходить из системы</label>
                         </div>
 
 
-                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Авторизоваться</button>
 <%--                        <a class="d-block text-center mt-2 small" href="#">Sign In</a>--%>
 <%--                        <hr class="my-4">--%>
 <%--                        <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>--%>

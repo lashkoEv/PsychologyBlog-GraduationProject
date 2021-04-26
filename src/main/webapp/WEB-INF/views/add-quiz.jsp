@@ -3,8 +3,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 
-<c:set var="title" value="Let's write a good quiz!"/>
-<c:set var="subtitle" value="Just write it."/>
+<c:set var="title" value="Удачи в создании интерестных квизов!"/>
+<c:set var="subtitle" value="Самое время показать креативность и профессионализм..."/>
 <c:set var="picture" value='${pageContext.request.contextPath}/img/29.jpg'/>
 
 <!-- dev-->
@@ -18,23 +18,18 @@
 <div class="container">
 
     <div class="col-lg-8 col-md-10 mx-auto" id="errDiv">
-<%--        <c:if test="${not empty errorMessage}">--%>
-<%--            <div class="alert alert-danger" >--%>
-<%--                <strong>Error:</strong> ${errorMessage}--%>
-<%--            </div>--%>
-<%--        </c:if>--%>
     </div>
 
     <div class="col-lg-8 col-md-10 mx-auto my-div" id="quiz">
         <div class="row justify-content-center">
-            <h3>TEST</h3>
+            <h3>ТЕСТ</h3>
         </div>
         <hr/>
         <div class="justify-content-md-center">
-            <input type="text" required="required" class="form-control" placeholder="Title" v-model="quiz.title">
+            <input type="text" required="required" class="form-control" placeholder="Введите название теста..." v-model="quiz.title">
         </div>
         <br/>
-        <textarea class="form-control" cols="62" rows="3" v-model="quiz.body" placeholder="Subtitle"></textarea>
+        <textarea class="form-control" cols="62" rows="3" v-model="quiz.body" placeholder="Пару слов о тесте..."></textarea>
         <br/>
 
         <ul id="question">
@@ -48,9 +43,9 @@
                         </h5>
                     </div>
                     <div class="input-field col s4">
-                        <label>Type:</label>
-                        <select v-model="item.type" style="width: 68%; font-size: medium">
-                            <option disabled value="">Type of question:</option>
+                        <label>Тип:</label>
+                        <select v-model="item.type" style="width: 69%; font-size: medium">
+                            <option disabled value="">Тип вопроса:</option>
                             <option>SINGLE</option>
                             <option>MULTIPLE</option>
                         </select>
@@ -58,7 +53,7 @@
                 </div>
 
                 <div class="col-form-label col-md-auto">
-                    <label>Question:</label>
+                    <label>Вопрос:</label>
                     <input type="text" class="form-control" required="required" v-model="item.textQuestion">
                 </div>
 
@@ -71,10 +66,10 @@
                         </h6>
 
                         <div class="col-form-label col-md-auto">
-                            <label>Possible answer:</label>
+                            <label>Ответ:</label>
                             <input type="text" class="form-control" required="required" v-model="answer.textAnswer"
                                    data-validation-required-message="Р Р°Р·РјРµСЂ РЅРµ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РјРµРЅСЊС€Рµ 5 СЃРёРјРІРѕР»РѕРІ!">
-                            <label style="margin-top: 5px">Weight:</label>
+                            <label style="margin-top: 5px">Вес ответа:</label>
                             <input type="number" class="form-control" required="required" v-model="answer.position"
                                    data-validation-required-message="Р Р°Р·РјРµСЂ РЅРµ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РјРµРЅСЊС€Рµ 5 СЃРёРјРІРѕР»РѕРІ!">
                         </div>
@@ -82,17 +77,17 @@
                 </ul>
                 <button style="margin-left: 55px" class="btn btn-primary"
                         v-on:click="addPossibleAnswers(item)">
-                    Add possible answer
+                    Добавить ответ
                 </button>
 
             </li>
         </ul>
         <div class="row justify-content-center">
-            <button class="btn btn-primary" @click="addQuestion">Add question</button>
+            <button class="btn btn-primary" @click="addQuestion">Добавить вопрос</button>
         </div>
         <hr/>
         <div class="row justify-content-center">
-            <h3>SCALES</h3>
+            <h3>Границы ответов</h3>
         </div>
         <hr/>
         <ul>
@@ -106,29 +101,28 @@
                         </h5>
                     </div>
                     <div class="col-form-label col-md-12">
-                        <label>Scale description</label>
+                        <label>Текст</label>
                         <input type="text" class="form-control" required="required" v-model="scale.textScale">
                     </div>
                     <div class="col-form-label col-md-6">
-                        <label>Lower bound</label>
+                        <label>Нижняя граница</label>
                         <input type="number" class="form-control" required="required" v-model="scale.min">
                     </div>
                     <div class="col-form-label col-md-6">
-                        <label>Upper bound</label>
+                        <label>Верхняя граница</label>
                         <input type="number" class="form-control" required="required" v-model="scale.max">
                     </div>
                 </div>
             </li>
         </ul>
         <div class="row justify-content-center">
-            <button class="btn btn-primary" v-on:click="addScale">Add scale
+            <button class="btn btn-primary" v-on:click="addScale">Добавить границу
             </button>
         </div>
         <hr/>
         <div class="row justify-content-md-center">
-            <button class="btn btn-primary" @click="saveQuiz">Save test</button>
+            <button class="btn btn-primary" @click="saveQuiz">Сохранить</button>
         </div>
-
 
     </div>
 
@@ -302,10 +296,12 @@
                     window.location.href = "/quizzes";
                 } catch (error) {
                     let errParent = document.getElementById("errDiv");
-                    let d = document.createElement("p");
-                    d.className = "alert alert-danger";
-                    d.textContent = "Error: minimum length is 5 characters";
-                    errParent.appendChild(d);
+                    if(errParent.childElementCount < 1) {
+                        let d = document.createElement("p");
+                        d.className = "alert alert-danger";
+                        d.textContent = "Ошибка! Длина должна быть не менее 5 символов!";
+                        errParent.appendChild(d);
+                    }
                     console.error('Ошибка:', error);
                 }
             },

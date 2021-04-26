@@ -64,7 +64,7 @@ public class PsychologistController {
     @RequestMapping(path = "", method = RequestMethod.GET)
     public String psychologists(Model model, Integer page, Integer size, @Param("search") String search) {
         log.info(" --- psychologist index");
-        Pageable pageable = PageRequest.of(page == null ? 0 : page, size == null ? 7 : size, Sort.by("id").descending());
+        Pageable pageable = PageRequest.of(page == null ? 0 : page, size == null ? 5 : size, Sort.by("id").descending());
         Page<User> userPage;
         if (search != null) {
             userPage = userService.findSearchedUsers(search, pageable);
@@ -113,9 +113,9 @@ public class PsychologistController {
             model.addAttribute("user", user);
             return "add-user";
         }
-        redirectAttributes.addFlashAttribute("msg", "Successfully saved");
+        redirectAttributes.addFlashAttribute("msg", "Учётная запить психолога успешно создана!");
         redirectAttributes.addFlashAttribute("posts", postService.findAllByOrderByIdDesc());
-        return "redirect:/";
+        return "redirect:/psychologists";
     }
 
     @RolesAllowed({"ROLE_ADMIN"})
@@ -125,12 +125,12 @@ public class PsychologistController {
         try {
             userService.delete(id);
             log.info(" --- deleted user id {}", id);
-            redirectAttributes.addFlashAttribute("msg", "Successfully deleted");
+            redirectAttributes.addFlashAttribute("msg", "Учётная запить психолога успешно удалена!");
         } catch (Exception e) {
             log.error(" --- Error ", e.getLocalizedMessage());
         }
         model.addAttribute("posts", postService.findAll());
-        return "redirect:/";
+        return "redirect:/psychologists";
     }
 
     @RolesAllowed({"ROLE_ADMIN"})
@@ -172,8 +172,8 @@ public class PsychologistController {
                     return "add-user";
                 }
             }
-            redirectAttributes.addFlashAttribute("msg", "Successfully saved");
+            redirectAttributes.addFlashAttribute("msg", "Учётная запить психолога успешно обновлена!");
             redirectAttributes.addFlashAttribute("posts", postService.findAllByOrderByIdDesc());
-            return "redirect:/";
+            return "redirect:/psychologists";
     }
 }

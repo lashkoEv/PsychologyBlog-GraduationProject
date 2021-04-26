@@ -19,14 +19,14 @@
 <div class="container">
     <div class="col-lg-8 col-md-10 mx-auto my-div" id="quiz">
         <div class="row justify-content-center">
-            <h3>TEST</h3>
+            <h3>ТЕСТ</h3>
         </div>
         <hr/>
         <div class="justify-content-md-center">
-            <input type="text" required="required" class="form-control" placeholder="Title" v-model="quiz.title" disabled>
+            <input type="text" required="required" class="form-control" placeholder="Название теста" v-model="quiz.title" disabled>
         </div>
         <br/>
-        <textarea class="form-control" cols="62" rows="3" v-model="quiz.body" placeholder="Subtitle" disabled></textarea>
+        <textarea class="form-control" cols="62" rows="3" v-model="quiz.body" placeholder="Краткая информация о тесте" disabled></textarea>
         <br/>
 
         <ul id="question">
@@ -38,7 +38,7 @@
                 </div>
 
                 <ul id="answers">
-                    <li v-for="(answer, index) in item.possibleAnswers">
+                    <li style="list-style-type: none" v-for="(answer, index) in item.possibleAnswers">
                         <input v-bind:name="'question-' + item.id" v-bind:type="item.type != 'SINGLE' ? 'checkbox' : 'radio'" v-model="answer.checked" class="btn-primary">
                         <label class="post-title">{{answer.textAnswer}}</label>
                     </li>
@@ -50,7 +50,7 @@
         </ul>
         <hr/>
         <div class="row justify-content-md-center">
-            <button class="btn btn-primary" @click="checkQuiz">Check</button>
+            <button class="btn btn-primary" @click="checkQuiz">Ответ</button>
         </div>
         <div style="margin-top: 10px" class="row justify-content-md-center btn-outline-dark" v-if="showText">
             {{text}}
@@ -60,14 +60,12 @@
             <hr/>
             <div class="row justify-content-md-center">
 <%--                <a class="btn btn-primary" href="<spring:url value="/post/edit/${post.id}"/>">Update</a>--%>
-                <a class="btn btn-primary" href="<spring:url value="/quizzes/delete/${quiz.id}"/>">Delete</a>
+                <a class="btn btn-primary" href="<spring:url value="/quizzes/delete/${quiz.id}"/>">Удалить</a>
             </div>
         </sec:authorize>
     </div>
 
 </div>
-
-
 
 <hr>
 

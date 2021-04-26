@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 
-<div class="row justify-content-md-center">
+<div class="row justify-content-md-center" style="margin-top: 30px">
     <c:if test="${page.totalPages > 1}">
         <div class="row">
             <ul class="pagination pagination-sm pagination-lg pagination-control">

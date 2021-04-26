@@ -68,21 +68,21 @@ public class IndexController {
     @GetMapping("/success")
     public String authorizationSuccess(RedirectAttributes redirectAttributes) {
         log.info(" --- index successfully authorized");
-        redirectAttributes.addFlashAttribute("msg", "Successfully authorized!");
+        redirectAttributes.addFlashAttribute("msg", "Вход выполнен успешно!");
         return "redirect:/";
     }
 
     @GetMapping("/login/error")
     public String authorizationError(RedirectAttributes redirectAttributes) {
         log.info(" --- index authorisation error");
-        redirectAttributes.addFlashAttribute("msgErr", "Authorisation Error!");
+        redirectAttributes.addFlashAttribute("msgErr", "Ошибка авторизации!");
         return "redirect:/";
     }
 
     @GetMapping("/logout/success")
     public String logout(RedirectAttributes redirectAttributes) {
         log.info(" --- index logout");
-        redirectAttributes.addFlashAttribute("msg", "Successfully logged out!");
+        redirectAttributes.addFlashAttribute("msg", "Выход выполнен успешно!");
         return "redirect:/";
     }
 }

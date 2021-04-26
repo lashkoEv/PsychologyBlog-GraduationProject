@@ -3,8 +3,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 
-<c:set var="title" value="Let's write a good post!"/>
-<c:set var="subtitle" value="Show your thoughts."/>
+<c:set var="title" value="Удачи в написании отличной статьи!"/>
+<c:set var="subtitle" value="Выразите свои мысли..."/>
 <c:set var="picture" value='${pageContext.request.contextPath}/img/30.jpg'/>
 
 
@@ -34,7 +34,7 @@
 
                 <form:errors path="*" cssClass="alert alert-danger" element="div"/>
 
-                <form:input id="title" path="title" name="title" type="text" required="required" class="form-control" placeholder="Title"/>
+                <form:input id="title" path="title" name="title" type="text" required="required" class="form-control" placeholder="Введите название статьи..."/>
                 <form:errors path="title" cssClass="error" />
 
                 <br/>
