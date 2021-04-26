@@ -30,13 +30,13 @@ public class QuizServiceImpl implements QuizService {
 
     @Override
     @Transactional(readOnly = true)
-    public Quiz findFetchAllProperiesById(Long id) {
+    public Quiz findFetchAllPropertiesById(Long id) {
         return quizRepository.findFetchAllPropertiesById(id);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Quiz findFullAndFetchAllProperiesById(Long id) {
+    public Quiz findFullAndFetchAllPropertiesById(Long id) {
         return quizRepository.findFullAndFetchAllProperiesById(id);
     }
 

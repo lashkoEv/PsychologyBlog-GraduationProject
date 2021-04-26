@@ -49,7 +49,7 @@
                         <!-- FIXME href ссылка на психолога -->
 
                         <a href="<spring:url value="/psychologists/${t.user.getId()}"/>">${t.user.getFirstName()} ${t.user.getLastName()}</a>,
-                        добавлено ${t.createdTs}</p>
+                        добавлено ${t.getCreatedDate()}</p>
                 </div>
 
             </c:forEach>

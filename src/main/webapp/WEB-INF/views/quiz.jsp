@@ -4,7 +4,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 
 <c:set var="title" value="${quiz.title}"/>
-<c:set var="subtitle" value="${quiz.body}"/>
+<c:set var="subtitle" value="Автор: ${quiz.user.getFirstName()} ${quiz.user.getLastName()}"/>
 <c:set var="picture" value="${pageContext.request.contextPath}/img/32.jpg"/>
 
 <!-- dev-->

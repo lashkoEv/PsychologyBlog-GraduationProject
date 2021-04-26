@@ -4,7 +4,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 
 <c:set var="title" value="${user.getFirstName()} ${user.getLastName()}"/>
-<c:set var="subtitle" value="Дата рождения: ${user.getBirthDate()} Email: ${user.getEmail()}"/>
+<c:set var="subtitle" value="Дата рождения: ${user.getBirthDateFormatted()} Email: ${user.getEmail()}"/>
 <c:set var="picture" value="${pageContext.request.contextPath}/img/19.jpg"/>
 
 <%@include file="include/navigation.jsp" %>
@@ -31,7 +31,7 @@
                     </a>
                     <p class="post-meta">Автор
                         <a href="<spring:url value="/psychologists/${p.user.getId()}"/>">${p.user.getFirstName()} ${p.user.getLastName()}</a>,
-                        добавлено ${p.createdTs}</p>
+                        добавлено ${p.getCreatedDate()}</p>
                 </div>
             </c:forEach>
         </div>
@@ -58,7 +58,7 @@
                         <!-- FIXME href ссылка на психолога -->
 
                         <a href="<spring:url value="/psychologists/${t.user.getId()}"/>">${t.user.getFirstName()} ${t.user.getLastName()}</a>,
-                        добавлено ${t.createdTs}</p>
+                        добавлено ${t.getCreatedDate()}</p>
                 </div>
             </c:forEach>
         </div>

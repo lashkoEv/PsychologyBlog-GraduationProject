@@ -39,7 +39,7 @@ public class RestQuizController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<?> getById(@PathVariable Long id) {
 //        Quiz quiz = quizService.findFullById(id);
-        Quiz quiz = quizService.findFullAndFetchAllProperiesById(id);
+        Quiz quiz = quizService.findFullAndFetchAllPropertiesById(id);
         return ResponseEntity.ok(quiz);
     }
 

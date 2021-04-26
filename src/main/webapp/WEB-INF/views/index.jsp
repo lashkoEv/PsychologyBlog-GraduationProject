@@ -62,7 +62,7 @@
                     <p class="post-meta">Автор
 
                         <a href="<spring:url value="/psychologists/${p.user.getId()}"/>">${p.user.getFirstName()} ${p.user.getLastName()}</a>,
-                        добавлено ${p.createdTs}</p>
+                        добавлено ${p.getCreatedDate()}</p>
                 </div>
             </c:forEach>
 

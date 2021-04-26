@@ -83,7 +83,7 @@
                 <div class="control-group">
                     <div class="form-group floating-label-form-group controls">
                         <form:label path="birthDate">Дата рождения</form:label>
-                        <form:input id="birthDate" path="birthDate" name="birthDate" type="text" required="required"
+                        <form:input id="birthDate" path="birthDate" name="birthDate" type="date" required="required"
                                     class="datepicker" placeholder="Дата рождения"/>
                         <form:errors path="birthDate" cssClass="error"/>
                     </div>

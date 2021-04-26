@@ -12,10 +12,10 @@ public interface QuizService {
     Quiz findById(Long id);
 
     @Transactional(readOnly = true)
-    Quiz findFetchAllProperiesById(Long id);
+    Quiz findFetchAllPropertiesById(Long id);
 
     @Transactional(readOnly = true)
-    Quiz findFullAndFetchAllProperiesById(Long id);
+    Quiz findFullAndFetchAllPropertiesById(Long id);
 
     @Transactional(readOnly = true)
     Quiz findFullById(Long id);

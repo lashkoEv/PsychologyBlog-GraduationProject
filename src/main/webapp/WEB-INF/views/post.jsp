@@ -4,7 +4,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 
 <c:set var="title" value="${post.title}"/>
-<c:set var="subtitle" value="Автор ${post.user.getFirstName()} ${post.user.getLastName()}, добавлено ${post.createdTs}"/>
+<c:set var="subtitle" value="Автор ${post.user.getFirstName()} ${post.user.getLastName()}, добавлено ${post.getCreatedDate()}"/>
 <c:set var="picture" value="${pageContext.request.contextPath}/img/22.jpg"/>
 
 <%@include file="include/navigation.jsp" %>

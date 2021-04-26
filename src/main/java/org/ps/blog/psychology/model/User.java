@@ -16,7 +16,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Set;
 
 @NoArgsConstructor
@@ -56,4 +55,21 @@ public class User {
     @JsonManagedReference
     private Set<Authority> authorities;
 
+    public String getBirthDateFormatted(){
+        int year = birthDate.getYear();
+        int month = birthDate.getMonthValue();
+        int dayOfMonth = birthDate.getDayOfMonth();
+        StringBuilder stringBuilder = new StringBuilder();
+        if(dayOfMonth < 10) {
+            stringBuilder.append("0");
+        }
+        stringBuilder.append(dayOfMonth);
+        if(month < 10){
+            stringBuilder.append(".0");
+        }
+        stringBuilder.append(month);
+        stringBuilder.append(".");
+        stringBuilder.append(year);
+        return stringBuilder.toString();
+    }
 }

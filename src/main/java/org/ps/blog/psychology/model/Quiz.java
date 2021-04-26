@@ -69,4 +69,22 @@ public class Quiz {
     public void toUpdate() {
         setModifiedTs(LocalDate.now());
     }
+
+    public String getCreatedDate(){
+        int year = createdTs.getYear();
+        int month = createdTs.getMonthValue();
+        int dayOfMonth = createdTs.getDayOfMonth();
+        StringBuilder stringBuilder = new StringBuilder();
+        if(dayOfMonth < 10) {
+            stringBuilder.append("0");
+        }
+        stringBuilder.append(dayOfMonth);
+        if(month < 10){
+            stringBuilder.append(".0");
+        }
+        stringBuilder.append(month);
+        stringBuilder.append(".");
+        stringBuilder.append(year);
+        return stringBuilder.toString();
+    }
 }
